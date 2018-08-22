@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<title>Moji.Best</title>
+	<meta name="description" content="Anyway.2017" />
+	<meta name="author" content="JJ Ying" />
+
+	<link rel="stylesheet" href="assets/styles.css" />
+
+	<script src="assets/vue.js"></script>
+
+</head>
+<body>
+
+	<main id="demo" :class=" 'on-' + currentSlide">
+		<div class="content">
+			<div class="inner">
+				<div v-for="n in numbers" class="wrapper">
+					<div class="people">
+						<img :src="'assets/b'+n%2+'.png'">
+						<img :src="'assets/h'+n%5+'.png'">
+						<img :src="'assets/t'+n%13+'.png'">
+					</div>
+					<!-- <p>
+						#{{n}}<br><strong>张{{200-n}}</strong>
+					</p> -->
+
+				</div>
+			</div>
+		</div>
+	</main>
+
+
+	<script src="assets/main.js?v=3155"></script>
+
+</body>
+</html>
