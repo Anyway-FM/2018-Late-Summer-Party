@@ -1,3 +1,4 @@
+@charset "utf-8";
 *{
 	margin: 0;
 	padding: 0;
@@ -14,13 +15,20 @@ body {
 	font-family: 'Avenir Next', sans-serif;
 	color: #333;
 }
+img{
+	image-rendering: -webkit-optimize-contrast;
+}
 main {
-	max-width: 700px;
 	margin: 0 auto;
-	width: 100%;
+	max-width: 100%;
 	background: #fff;
 }
-
+.content > .inner{
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	height: 100vh;
+}
 .wrapper{
 	float: left;
 	font-size: 8px;
@@ -28,13 +36,121 @@ main {
 }
 .people{
 	display: inline-block;
-	height: 60px;
+	height: 110px;
 	position: relative;
-	width: 40px;
+	width: 80px;
 }
-.people img{
+.people img,
+.people div{
 	position: absolute;
 	width: 100%;
 	display: block;
-	filter:hue-rotate();
+	height: 100%;
+}
+.people div{
+	background-size: contain;
+}
+.head-0 .head{background-image: url(h0.png);}
+.head-1 .head{background-image: url(h1.png);}
+.head-2 .head{background-image: url(h2.png);}
+.head-3 .head{background-image: url(h3.png);}
+.head-4 .head{background-image: url(h4.png);}
+
+.head-0 .eye{background-image: url(e0.png);}
+.head-1 .eye{background-image: url(e1.png);}
+.head-2 .eye{background-image: url(e2.png);}
+.head-3 .eye{background-image: url(e3.png);}
+.head-4 .eye{background-image: url(e4.gif);}
+/* ~Eyes */
+.head-0 .eye{
+	animation: eye-0 2s ease-out infinite both;
+}
+@keyframes eye-0 {
+	0%{opacity: 1;}
+	5%{opacity: 0;}
+	10%{opacity: 1;}
+	15%{opacity: 0;}
+	20%{opacity: 1;}
+	25%{opacity: 0;}
+	30%{opacity: 1;}
+	100%{opacity: 1;}
+}
+.head-1 .eye{
+	animation: eye-0 2s ease-out infinite both;
+}
+.head-2 .eye{
+	animation: eye-2 2s ease-out infinite both;
+}
+.head-3 .eye{
+	animation: eye-0 3.2s ease-in .14s infinite both;
+}
+@keyframes eye-2 {
+	0%{transform: translateX(-4%);}
+	30%{transform: translateX(-4%);}
+	40%{transform: translateX(4%);}
+	60%{transform: translateX(4%);}
+	100%{transform: translateX(-4%);}
+}
+/* ~Animations */
+.wrapper.ani-0:hover{
+	animation: ani-a .8s ease-out infinite;
+}
+@keyframes ani-a {
+	0%{transform: none;}
+	10%{transform: translateY(-1em);}
+	23%{transform: none;}
+	34%{transform: translateY(-1em);}
+	44%{transform: none;}
+}
+.wrapper.ani-1:hover .head,
+.wrapper.ani-1:hover .eye,
+.wrapper.ani-1:hover .hair{
+	animation: ani-b .4s ease-out infinite;
+}
+.wrapper.ani-1:hover .hair{
+	animation-delay: .01s;
+}
+@keyframes ani-b {
+	0%{transform: none;}
+	25%{transform: translateX(3%);}
+	50%{transform: none;}
+	75%{transform: translateX(-3%);}
+	100%{transform: none;}
+}
+.wrapper.ani-2:hover .head,
+.wrapper.ani-2:hover .eye,
+.wrapper.ani-2:hover .hair{
+	animation: ani-c .4s ease-out infinite;
+}
+@keyframes ani-c {
+	0%{transform: none;}
+	25%{transform: rotate(3deg);}
+	50%{transform: none;}
+	75%{transform: rotate(-3deg);}
+	100%{transform: none;}
+}
+/* 人慢慢晃 */
+.wrapper.ani-3:hover{
+	animation: ani-c .7s cubic-bezier(.79,.03,1,.25) infinite;
+	transform-origin: bottom;
+}
+/* 点头 */
+.wrapper.ani-4:hover .head,
+.wrapper.ani-4:hover .eye,
+.wrapper.ani-4:hover .hair{
+	animation: ani-d 1s ease-out infinite;
+}
+.wrapper.ani-4:hover .hair{
+	animation-delay: .01s;
+}
+@keyframes ani-d {
+	0%{transform: none;}
+	5%{transform: translateY(2%);}
+	10%{transform: none;}
+	15%{transform: translateY(-2%);}
+	20%{transform: none;}
+	25%{transform: translateY(2%);}
+	30%{transform: none;}
+	35%{transform: translateY(-2%);}
+	40%{transform: none;}
 }

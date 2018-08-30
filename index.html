@@ -3,8 +3,8 @@
 <head>
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-	<title>Moji.Best</title>
-	<meta name="description" content="Anyway.2017" />
+	<title>Anyway.FM 夏末坦荡大会</title>
+	<meta name="description" content="设计杂谈播客 Anyway.FM 的 2018 年度线下活动" />
 	<meta name="author" content="JJ Ying" />
 
 	<link rel="stylesheet" href="assets/styles.css" />
@@ -14,22 +14,25 @@
 </head>
 <body>
 
-	<main id="demo" :class=" 'on-' + currentSlide">
+	<main id="demo">
 		<div class="content">
 			<div class="inner">
-				<div v-for="n in numbers" class="wrapper">
+				<div v-for="n in numbers" class="wrapper" :class="['ani-'+randomNumber(4),'head-'+randomNumber(4)]">
 					<div class="people">
-						<img :src="'assets/b'+n%2+'.png'">
-						<img :src="'assets/h'+n%5+'.png'">
-						<img :src="'assets/t'+n%13+'.png'">
+						<img class="bd" :src="'assets/b'+randomNumber(1)+'.png'">
+						<div class="head"></div>
+						<div class="eye"></div>
+						<!-- <img class="hd" :src="'assets/h'+randomNumber(4)+'.png'"> -->
+						<img class="hair" :src="'assets/t'+randomNumber(12)+'.png'">
 					</div>
 					<!-- <p>
-						#{{n}}<br><strong>张{{200-n}}</strong>
+						<strong>张{{200-n}}</strong>
 					</p> -->
 
 				</div>
 			</div>
 		</div>
+		<a @click="reSeed()">Re-seed</a><br><br><br>
 	</main>
 
 
