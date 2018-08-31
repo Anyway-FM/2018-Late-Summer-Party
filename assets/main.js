@@ -7,8 +7,6 @@ var g = new Vue({
   },
   methods: {
     randomNumber: function (x) {
-      console.log(this.globalSeed);
-      // this.globalSeed = Math.random()
       x = Math.random() * x
       return (x.toFixed(0))
     },

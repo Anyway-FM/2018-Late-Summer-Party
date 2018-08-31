@@ -17,22 +17,27 @@
 	<main id="demo">
 		<div class="content">
 			<div class="inner">
-				<div v-for="n in numbers" class="wrapper" :class="['ani-'+randomNumber(4),'head-'+randomNumber(4)]">
-					<div class="people">
-						<img class="bd" :src="'assets/b'+randomNumber(1)+'.png'">
-						<div class="head"></div>
-						<div class="eye"></div>
-						<!-- <img class="hd" :src="'assets/h'+randomNumber(4)+'.png'"> -->
-						<img class="hair" :src="'assets/t'+randomNumber(12)+'.png'">
-					</div>
-					<!-- <p>
-						<strong>张{{200-n}}</strong>
-					</p> -->
+				<div v-for="n in numbers" class="wrapper">
+					<div class="inner"  :class="['ani-'+randomNumber(9),'head-'+randomNumber(4),'body-'+randomNumber(1)]">
 
+						<div class="people">
+
+							<div class="hand"></div>
+							<div class="feet"></div>
+							<div class="body"></div>
+							<div class="head"></div>
+							<div class="eye"></div>
+							<img class="hair" :src="'assets/t'+randomNumber(12)+'.png'">
+							<div class="mask"></div>
+						</div>
+
+						<div class="mask-outer"></div>
+
+					</div>
 				</div>
 			</div>
 		</div>
-		<a @click="reSeed()">Re-seed</a><br><br><br>
+		<!-- <a @click="reSeed()">Re-seed</a><br><br><br> -->
 	</main>
 
 
