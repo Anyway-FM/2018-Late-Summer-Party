@@ -1,5 +1,5 @@
 var g = new Vue({
-  el: '#demo',
+  el: '#party',
   data: {
     numbers: 100,
     seedCount: 0,
@@ -16,6 +16,18 @@ var g = new Vue({
   }
 })
 
+initProcess = function() {
+  fullWidth = window.getComputedStyle(document.getElementById('content')).width.replace(/[^-\d\.]/g, '')
+  fullHeight = window.getComputedStyle(document.getElementById('content')).height.replace(/[^-\d\.]/g, '')
+  hNumber = Math.floor( fullWidth / 80 )
+  vNumber = Math.floor( fullHeight / 110 )
+  g.numbers = hNumber * vNumber
+  console.log(g.numbers );
+}
 window.onload = function(){
+  initProcess()
 
+}
+window.onresize = function(){
+  initProcess()
 }
