@@ -19,25 +19,42 @@ img{
 	image-rendering: -webkit-optimize-contrast;
 }
 main {
-	margin: 0 auto;
 	max-width: 100%;
 	background: #fff;
 }
+.content{
+	width: 96vw;
+	height: 96vh;
+	margin: 2vh 2vw;
+}
 .content > .inner{
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	height: 100vh;
+	/* display: flex; */
+	text-align: center;
 }
 .wrapper{
 	width: 80px;
 	height: 110px;
+	display: inline-block;
+}
+.wrapper:nth-of-type(5n-2){
+	transform: translateY(9%);
+	/* background: #0f0; */
+}
+.wrapper:nth-of-type(5n-4){
+	transform: translateY(-4%);
+	/* background: #f00; */
+}
+.wrapper:nth-of-type(5n){
+	transform: translateY(2%);
+	/* background: #0ff; */
+}
+.wrapper:nth-of-type(3n+1){
+	transform: translateY(-9%);
+	/* background: #ff0; */
 }
 .wrapper:nth-of-type(odd){
-	transform: translateY(10%);
-}
-.wrapper:nth-of-type(even){
-	transform: translateY(-10%)scaleX(-1);
+	transform: translateY(-3%)scaleX(-1);
+	/* background: #f0f; */
 }
 .wrapper > .inner{
 	position: relative;
@@ -316,6 +333,7 @@ main {
 	z-index: 101;
 	opacity: .9;
 	transform: translateY(0)scaleX(1);
+	pointer-events: none;
 }
 .ani-8:hover .people{
 	z-index: 999;
