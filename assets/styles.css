@@ -14,53 +14,57 @@ body {
 	width: 100%;
 	font-family: 'Avenir Next', sans-serif;
 	color: #333;
+	overflow: hidden;
+}
+@keyframes slowShow {
+	0% {opacity: 0}
+	100% {opacity: 1;}
 }
 img{
 	image-rendering: -webkit-optimize-contrast;
 }
 main {
-	max-width: 100%;
+	width: 100vw;
 	background: #fff;
+	height: 100vh;
 }
 .content{
-	width: 96vw;
-	height: 96vh;
-	margin: 2vh 2vw;
+	width: 120vw;
+	height: 110vh;
+	position: absolute;
+	left: -10vw;
+	top: -5vh;
+	animation: slowShow .2s cubic-bezier(1,0,.5,.5) .5s both
 }
 .content > .inner{
-	/* display: flex; */
-	text-align: center;
+	display: flex;
+	position: relative;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
 }
 .wrapper{
 	width: 80px;
 	height: 110px;
-	display: inline-block;
+	display: block;
+	margin: 0;
+	vertical-align: middle;
+	border: none;
 }
-.wrapper:nth-of-type(5n-2){
-	transform: translateY(9%);
-	/* background: #0f0; */
+.line-breaker {
+  width: 100%;
+	height: 1px;
 }
-.wrapper:nth-of-type(5n-4){
-	transform: translateY(-4%);
-	/* background: #f00; */
+.odd{
+	transform: translateY(-15%)scaleX(-1);
 }
-.wrapper:nth-of-type(5n){
-	transform: translateY(2%);
-	/* background: #0ff; */
-}
-.wrapper:nth-of-type(3n+1){
-	transform: translateY(-9%);
-	/* background: #ff0; */
-}
-.wrapper:nth-of-type(odd){
-	transform: translateY(-3%)scaleX(-1);
-	/* background: #f0f; */
+.even{
+	transform: translateY(35%);
 }
 .wrapper > .inner{
 	position: relative;
 }
 .people{
-	display: block;
 	height: 110px;
 	position: relative;
 	width: 80px;
@@ -111,13 +115,14 @@ main {
 	100%{opacity: 1;}
 }
 .head-1 .eye{
-	animation: eye-1 2s ease-out infinite both;
+	animation: eye-1 3s ease-out infinite both;
 }
 @keyframes eye-1 {
 	0%{opacity: 0;}
+	9%{opacity: 0;}
 	10%{opacity: 1;}
 	30%{opacity: 1;}
-	40%{opacity: 0;}
+	31%{opacity: 0;}
 	100%{opacity: 0;}
 }
 .head-2 .eye{
@@ -136,7 +141,7 @@ main {
 /* ~Animations */
 
 /* 人跳起来 */
-.ani-0:hover{
+.ani-0:hover .people{
 	animation: ani-a .8s ease-out infinite;
 }
 .ani-0:hover .feet{
@@ -178,14 +183,9 @@ main {
 	100%{transform: none;}
 }
 /* 人慢慢晃 */
-.ani-3:hover {
+.ani-3:hover .people{
 	animation: ani-c .7s cubic-bezier(.79,.03,1,.25) infinite;
 	transform-origin: bottom;
-}
-.ani-3:hover .head,
-.ani-3:hover .eye,
-.ani-3:hover .hair{
-	/* animation: ani-c .7s ease-in-out infinite; */
 }
 /* 点头 */
 .ani-4:hover .head,
@@ -217,7 +217,7 @@ main {
 	100%{transform: translateX(-30rem) rotate(1turn);opacity: 0;}
 }
 /* 人消失 */
-.ani-6{
+.ani-6 .people{
 	overflow: hidden;
 }
 .ani-6 *{
@@ -312,16 +312,21 @@ main {
 	/* background: #f5f5f5; */
 }
 .ani-8:hover .people{
-	animation: ani-h 2s cubic-bezier(1,0,1,0) both;
-	z-index: 99;
+	animation: ani-h 1.2s cubic-bezier(.8,0,1,.5) .07s both;
+	z-index: 999;
+}
+.ani-8:hover .mask-outer{
 }
 .ani-8 .mask-outer::before{
 	content: "";
 	background: url(beam.png) no-repeat bottom center;
+	background-color:  rgba(255,255,255,.9) ;
 	background-size: contain;
 	opacity: 0;
 	transform: translateY(-1em)scaleX(0);
-	transition: .12s ease-out;
+	transition: .17s ease-out;
+	box-shadow: 0 0 1000px 100px #fff,
+	0 0 1000px 100px #fff;
 }
 .ani-8:hover .mask-outer::before{
 	position: absolute;
@@ -330,18 +335,15 @@ main {
 	display: block;
 	top: -880px;
 	left: 0;
-	z-index: 101;
 	opacity: .9;
 	transform: translateY(0)scaleX(1);
 	pointer-events: none;
 }
-.ani-8:hover .people{
-	z-index: 999;
-}
 @keyframes ani-h {
 	0%{transform: none;}
-	70%{filter: blur(1px);}
-	100%{transform: translateY(-1000px);}
+	/* 70%{filter: blur(1px);} */
+	99%{opacity: 1;}
+	100%{transform: translateY(-300px)scale(.6);opacity: 0;}
 }
 /* 竖中指 */
 .ani-9:hover .hand{
@@ -351,4 +353,30 @@ main {
 	0%{transform: none;}
 	50%{transform: translateY(-4%);}
 	100%{transform: none;}
+}
+ /* 中间挖空 */
+.removed{
+ /* background: #0f0; */
+	pointer-events: none;
+}
+.removed .people{
+	display: none;
+}
+.mid{
+	padding: 7vh 3vw;
+	position: fixed;
+	/* background: #00f; */
+	opacity: 0;
+	animation: slowShow .2s cubic-bezier(1,0,.5,.5) .1s both
+}
+.mid img{
+	max-width: 100%;
+}
+/*~Small Reslotuion*/
+@media screen and (max-width: 1100px) {
+	.wrapper,
+	.people{
+		width: 56px;
+		height: 77px;
+	}
 }

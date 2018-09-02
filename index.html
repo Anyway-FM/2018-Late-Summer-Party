@@ -17,27 +17,38 @@
 	<main id="party">
 		<div class="content" id="content">
 			<div class="inner">
-				<div v-for="n in numbers" class="wrapper">
-					<div class="inner"  :class="['ani-'+randomNumber(9),'head-'+randomNumber(4),'body-'+randomNumber(1)]">
+				<template v-for="n in numbers">
+					<div v-if="n % hNumber == 1 && (n!=1)" class="line-breaker"></div>
 
-						<div class="people">
+					<div class="wrapper" :id="'w'+n" :class="[n%2==1?'odd':'even', isRemoved(n)]">
+						<div class="inner"  :class="['ani-'+randomNumber(9),'head-'+randomNumber(4),'body-'+randomNumber(1)]"  :style="{transform: 'translateY(' + randomPercentage(0) + '%)translateX(' + randomPercentage(0) + '%)'}">
 
-							<div class="hand"></div>
-							<div class="feet"></div>
-							<div class="body"></div>
-							<div class="head"></div>
-							<div class="eye"></div>
-							<img class="hair" :src="'assets/t'+randomNumber(12)+'.png'">
-							<div class="mask"></div>
+							<div class="people">
+
+								<div class="hand"></div>
+								<div class="feet"></div>
+								<div class="body"></div>
+								<div class="head"></div>
+								<div class="eye"></div>
+								<img class="hair" :src="'assets/t'+randomNumber(12)+'.png'">
+								<div class="mask"></div>
+							</div>
+
+							<div class="mask-outer"></div>
+
 						</div>
-
-						<div class="mask-outer"></div>
-
 					</div>
-				</div>
+
+			</template>
+			</div>
+
+
+		</div>
+		<div class="mid" :style="{width: midWidth + 'px',height: midHeight + 'px',top: midY + 'px',left: midX + 'px'}">
+			<div class="inner">
+				<img class="logo" src="assets/logo.png">
 			</div>
 		</div>
-		<!-- <a @click="reSeed()">Re-seed</a><br><br><br> -->
 	</main>
 
 
