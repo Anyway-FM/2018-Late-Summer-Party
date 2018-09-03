@@ -20,12 +20,18 @@
 				<div class="mid" :style="{width: midWidth + 'px',height: midHeight + 'px',top: midY + 'px',left: midX + 'px'}">
 					<div class="inner">
 						<img class="logo" src="assets/logo.png" v-if="isLoaded">
-						<div class="tagline">来自设计播客 Anyway.FM 的三周年线下活动，主要内容包括 XXX，时间是 9 月 22 日下午 2 点。</div>
-						<div class="buy"><a href="#">立即购票 ↝</a></div>
+						<div class="tagline">
+							<ul>
+								<li><a href="#" class="btn">活动时间 ↝</a></li>
+								<li><a href="#" class="btn">活动地点 ↝</a></li>
+								<li><a href="#" class="btn">活动内容 ↝</a></li>
+							</ul>
+						</div>
+						<div class="buy"><a href="#" class="btn">立即购票 ↝</a></div>
 					</div>
 				</div>
 				<template v-for="n in numbers">
-					<div class="wrapper" :id="'w'+n" :class="[(n%hNumber%2)==1?'odd':'even', isRemoved(n)]">
+					<div class="wrapper" :id="'w'+n" :class="[((n-1)%hNumber%2)==1?'odd':'even', isRemoved(n)]">
 						<div class="inner"  :class="['ani-'+randomNumber(9),'head-'+randomNumber(4),'body-'+randomNumber(1)]"  :style="{transform: 'translateY(' + randomPercentage(0) + '%)translateX(' + randomPercentage(0) + '%)'}">
 
 							<div class="people">

@@ -81,6 +81,9 @@ main {
 	background-size: contain;
 }
 .hand{background-image: url(hand.png);}
+.eye{z-index: 3;}
+.hair{z-index: 4;}
+.mask{z-index: 5;}
 
 .body-0 .body{background-image: url(b0.png);}
 .body-1 .body{background-image: url(b1.png);}
@@ -233,11 +236,11 @@ main {
 	position: absolute;
 	background: #fff;
 	transition: none;
-	/* animation: ani-f .5s cubic-bezier(.79,.03,1,.25) both; */
+	z-index: 19;
 }
 .ani-6:hover .mask::before,
 .ani-6:hover .mask::after{
-
+	z-index: 19;
 	transition: all .25s ease-in;
 }
 .ani-6 .mask::before{
@@ -378,23 +381,51 @@ main {
 	width: 100%;
 	height: 100%;
 	flex-direction: column;
-	justify-content: space-between;
-	/* align-items: stretch; */
+	justify-content: space-around;
+	align-items: flex-start;
 	font-size: .875rem;
+	color: #4c4afe;
 }
-.buy a{
+.btn{
 	background: #4c4afe;
-	padding: .3em .6em;
+	padding: .2em .6em .2em .8em;
 	letter-spacing: .2em;
 	color: #fff;
 	font-weight: 700;
 	text-decoration: none;
 	font-size: 1rem;
 	z-index: 9999;
-	transition: all .15s ease-out;
+	transition: all .1s ease-out;
+	display: block;
+	line-height: 2;
 }
-.buy a:hover{
-	background: #ff003f;
+.btn:hover{
+	background: #ff0162;
+}
+.tagline{
+	width: 100%;
+}
+.tagline ul{
+	list-style: none;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	width: 100%;
+}
+.tagline li a{
+	font-size: .875rem;
+	margin: .3em 0;
+	background: #ff0162;
+}
+.tagline li a:hover{
+	background: #4c4afe;
+}
+.buy{
+	width: 100%;
+}
+.buy a{
+	margin: 0 auto;
+	display: inline-block;
 }
 /*~Small Reslotuion*/
 @media screen and (max-width: 1050px) {
