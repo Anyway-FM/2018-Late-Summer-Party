@@ -2,15 +2,14 @@ var g = new Vue({
   el: '#party',
   data: {
     numbers: 100,
-    seedCount: 0,
     hNumber: 18,
     rawHNumber: 18,
     midWidth: 200,
     midHeight: 200,
-    midX: 200,
-    midY: 200,
+    midX: -200,
+    midY: -200,
     vNumber: 6,
-    globalSeed: 1
+    isLoaded: false
   },
   methods: {
     randomNumber: function (x) {
@@ -24,16 +23,24 @@ var g = new Vue({
     isRemoved: function(x) {
       // console.log(x)
       // console.log(this.rawHNumber);
-      if (Math.abs(Math.floor(x / this.hNumber) - this.vNumber / 2 + 0.5) < 2) {
-        if (Math.abs(x % this.hNumber - this.hNumber / 2 - 0.5) < 3) {
-          return "removed"
+      if (this.vNumber % 2 == 0) {
+        if (Math.abs(Math.floor(x / this.hNumber) + 1 - ( this.vNumber / 2 + 0.5) ) < 2) {
+          if (Math.abs(x % this.hNumber - this.hNumber / 2 - 0.5) < 3) {
+            return "removed"
+          }
         }
+
+      }
+      else {
+        if (Math.abs(Math.floor(x / this.hNumber) + 1 - ( this.vNumber / 2 + 0.5) ) < 2.5) {
+          if (Math.abs(x % this.hNumber - this.hNumber / 2 - 0.5) < 3) {
+            return "removed"
+          }
+        }
+
       }
 
 
-    },
-    reSeed: function() {
-      this.globalSeed = this.globalSeed / 2
     }
   }
 })
@@ -50,15 +57,32 @@ initProcess = function() {
 
   g.rawHNumber = fullWidth / singleWidth
 
-  g.hNumber = Math.floor( fullWidth / singleWidth / 2) * 2
+  // g.hNumber = Math.floor( fullWidth / singleWidth / 2) * 2
+  g.hNumber = Math.floor( fullWidth / singleWidth )
   g.vNumber = Math.floor( fullHeight / singleHeight )
   g.numbers = g.hNumber * g.vNumber
-  console.log( "/" + g.rawHNumber + "/" + g.numbers + "/" + g.hNumber);
+  console.log( "hNumber: " + g.hNumber + " vNumber: " + g.vNumber);
 
-  g.midX = ( screenWidth - singleWidth * 6 ) /2
-  g.midY = ( screenHeight - singleHeight * 3 ) /2
-  g.midWidth = singleWidth * 6
-  g.midHeight = singleHeight * 3
+
+  if (g.hNumber %2 == 0) {
+    g.midX = fullWidth / 2 - singleWidth * 3
+    g.midWidth = singleWidth * 6
+  }
+  else {
+    g.midX = fullWidth / 2 - singleWidth * 2.5
+    g.midWidth = singleWidth * 5
+  }
+
+  if (g.vNumber%2==0) {
+    g.midY =( g.vNumber - 4 ) * singleHeight / 2
+    g.midHeight = singleHeight * 4
+  }
+  else {
+    g.midY =( g.vNumber - 5 ) * singleHeight / 2
+    g.midHeight = singleHeight * 5
+  }
+
+  g.isLoaded = true;
 }
 window.onload = function(){
   initProcess()
