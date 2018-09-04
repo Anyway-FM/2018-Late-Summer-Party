@@ -124,3 +124,4 @@ window.onload = function(){
 window.onresize = function(){
   initProcess()
 }
+ document.body.addEventListener('touchstart', function () {});

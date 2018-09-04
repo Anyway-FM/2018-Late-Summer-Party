@@ -141,10 +141,12 @@ main {
 /* ~Animations */
 
 /* 人跳起来 */
-.ani-0:hover .people{
+.ani-0:hover .people,
+.ani-0:active .people{
 	animation: ani-a .8s ease-out infinite;
 }
-.ani-0:hover .feet{
+.ani-0:hover .feet,
+.ani-0:active .feet{
 	animation: ani-a .8s ease-out .01s infinite;
 }
 @keyframes ani-a {
@@ -156,10 +158,14 @@ main {
 }
 .ani-1:hover .head,
 .ani-1:hover .eye,
-.ani-1:hover .hair{
+.ani-1:hover .hair,
+.ani-1:active .head,
+.ani-1:active .eye,
+.ani-1:active .hair{
 	animation: ani-b .4s ease-out infinite;
 }
-.ani-1:hover .hair{
+.ani-1:hover .hair,
+.ani-1:active .hair{
 	animation-delay: .01s;
 }
 @keyframes ani-b {
@@ -172,7 +178,10 @@ main {
 /* 转头 */
 .ani-2:hover .head,
 .ani-2:hover .eye,
-.ani-2:hover .hair{
+.ani-2:hover .hair,
+.ani-2:active .head,
+.ani-2:active .eye,
+.ani-2:active .hair{
 	animation: ani-c .4s ease-out infinite;
 }
 @keyframes ani-c {
@@ -183,17 +192,22 @@ main {
 	100%{transform: none;}
 }
 /* 人慢慢晃 */
-.ani-3:hover .people{
+.ani-3:hover .people,
+.ani-3:active .people{
 	animation: ani-c .7s cubic-bezier(.79,.03,1,.25) infinite;
 	transform-origin: bottom;
 }
 /* 点头 */
 .ani-4:hover .head,
 .ani-4:hover .eye,
-.ani-4:hover .hair{
+.ani-4:hover .hair,
+.ani-4:active .head,
+.ani-4:active .eye,
+.ani-4:active .hair{
 	animation: ani-d 1s ease-out infinite;
 }
-.ani-4:hover .hair{
+.ani-4:hover .hair,
+	.ani-4:active .hair{
 	animation-delay: .01s;
 }
 @keyframes ani-d {
@@ -208,7 +222,8 @@ main {
 	40%{transform: none;}
 }
 /* 头发吹走 */
-.ani-5:hover .hair{
+.ani-5:hover .hair,
+.ani-5:active .hair{
 	animation: ani-e 2s ease-in-out both;
 	transform-origin: 50% 10%;
 	z-index: 999;
@@ -240,7 +255,9 @@ main {
 	z-index: 19;
 }
 .ani-6:hover .mask::before,
-.ani-6:hover .mask::after{
+.ani-6:hover .mask::after,
+.ani-6:active .mask::before,
+.ani-6:active .mask::after{
 	z-index: 19;
 	transition: all .25s ease-in;
 }
@@ -248,22 +265,27 @@ main {
 	left: -65%;
 	border-right: 2px solid #4646ff;
 }
-.ani-6:hover .mask::before{
+.ani-6:hover .mask::before,
+.ani-6:active .mask::before{
 	left: 0;
 }
 .ani-6 .mask::after{
 	right: -65%;
 	border-left: 2px solid #4646ff;
 }
-.ani-6:hover .mask::after{
+.ani-6:hover .mask::after,
+.ani-6:active .mask::after{
 	right: 0;
 }
 .ani-6:hover .people,
-.ani-6:hover .mask{
+.ani-6:hover .mask,
+.ani-6:active .people,
+.ani-6:active .mask{
 	transform: scaleY(0);
 	transition-delay: .5s;
 }
-.ani-6:hover .mask{
+.ani-6:hover .mask,
+.ani-6:active .mask{
 	transition-delay: .7s;
 }
 @keyframes ani-f {
@@ -273,27 +295,31 @@ main {
 	100%{display: none;background-image: url(m0.gif)}
 }
 /* 转身走开 */
-/* .ani-7{
-	background: #0f0;
-} */
 .ani-7 .mask{
 	background-image: url(back.png);
 	opacity: 0;
 }
-.ani-7:hover{
+.ani-7:hover,
+.ani-7:active{
 	animation: ani-c .5s cubic-bezier(.79,.03,1,.25) infinite;
 	transform-origin: bottom;
 }
-.ani-7:hover .mask{
+.ani-7:hover .mask,
+.ani-7:active .mask{
 	animation: ani-g2 10s ease-out both;
 }
-.ani-7:hover .people{
+.ani-7:hover .people,
+.ani-7:active .people{
 	animation: ani-g 10s ease-out both;
 }
 .ani-7:hover .head,
 .ani-7:hover .eye,
 .ani-7:hover .hair,
-.ani-7:hover .body{
+.ani-7:hover .body,
+.ani-7:active .head,
+.ani-7:active .eye,
+.ani-7:active .hair,
+.ani-7:active .body{
 	animation: ani-g3 10s ease-out both;
 }
 @keyframes ani-g {
@@ -315,11 +341,10 @@ main {
 .ani-8{
 	/* background: #f5f5f5; */
 }
-.ani-8:hover .people{
+.ani-8:hover .people,
+.ani-8:active .people{
 	animation: ani-h 1.2s cubic-bezier(.8,0,1,.5) .07s both;
 	z-index: 999;
-}
-.ani-8:hover .mask-outer{
 }
 .ani-8 .mask-outer::before{
 	content: "";
@@ -332,7 +357,8 @@ main {
 	box-shadow: 0 0 1000px 100px #fff,
 	0 0 1000px 100px #fff;
 }
-.ani-8:hover .mask-outer::before{
+.ani-8:hover .mask-outer::before,
+.ani-8:active .mask-outer::before{
 	position: absolute;
 	height: 900px;
 	width: 72px;
@@ -347,10 +373,11 @@ main {
 	0%{transform: none;}
 	/* 70%{filter: blur(1px);} */
 	99%{opacity: 1;}
-	100%{transform: translateY(-270px)scale(.6);opacity: 0;}
+	100%{transform: translateY(-220%)scale(.6);opacity: 0;}
 }
 /* 竖中指 */
-.ani-9:hover .hand{
+.ani-9:hover .hand,
+.ani-9:active .hand{
 	animation: ani-i .5s cubic-bezier(.79,.03,1,.25) infinite;
 }
 @keyframes ani-i {
@@ -358,9 +385,6 @@ main {
 	50%{transform: translateY(-4%);}
 	100%{transform: none;}
 }
-/* .ani-10{
-	background: #00f;
-} */
 .ani-10 .mask{
 	z-index: 99;
 	position: absolute;
@@ -377,7 +401,8 @@ main {
 	transition: .1s ease-out;
 	display: none;
 }
-.ani-10:hover .mask{
+.ani-10:hover .mask,
+.ani-10:active .mask{
 	transform: none;
 	opacity: 1;
 	display: block;
@@ -516,6 +541,11 @@ main {
 	.more-info{
 		justify-content: center;
 	}
+	.ani-8:hover .mask-outer::before{
+		height: 800px;
+		width: 64px;
+		top: -704px;
+	}
 }
 @media screen and (max-width: 900px) {
 	.wrapper,
@@ -531,5 +561,10 @@ main {
 	}
 	.buy a{
 		border: none;
+	}
+	.ani-8:hover .mask-outer::before{
+		height: 500px;
+		width: 40px;
+		top: -440px;
 	}
 }
