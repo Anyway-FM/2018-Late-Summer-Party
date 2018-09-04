@@ -12,7 +12,7 @@
 body {
 	background: #fff;
 	width: 100%;
-	font-family: 'Avenir Next', sans-serif;
+	font-family: 'Calluna Sans', sans-serif;
 	color: #333;
 	overflow: hidden;
 }
@@ -56,10 +56,7 @@ main {
 	height: 1px;
 }
 .odd{
-	transform: translateY(-15%)scaleX(-1);
-}
-.even{
-	transform: translateY(35%);
+	transform: translateY(40%);
 }
 .wrapper > .inner{
 	position: relative;
@@ -214,10 +211,14 @@ main {
 .ani-5:hover .hair{
 	animation: ani-e 2s ease-in-out both;
 	transform-origin: 50% 10%;
+	z-index: 999;
 }
 @keyframes ani-e {
 	0%{transform: none;}
 	100%{transform: translateX(-30rem) rotate(1turn);opacity: 0;}
+}
+.even .ani-5 .people{
+	transform: scaleX(-1);
 }
 /* 人消失 */
 .ani-6 .people{
@@ -333,10 +334,10 @@ main {
 }
 .ani-8:hover .mask-outer::before{
 	position: absolute;
-	height: 1000px;
-	width: 80px;
+	height: 900px;
+	width: 72px;
 	display: block;
-	top: -880px;
+	top: -792px;
 	left: 0;
 	opacity: .9;
 	transform: translateY(0)scaleX(1);
@@ -346,7 +347,7 @@ main {
 	0%{transform: none;}
 	/* 70%{filter: blur(1px);} */
 	99%{opacity: 1;}
-	100%{transform: translateY(-300px)scale(.6);opacity: 0;}
+	100%{transform: translateY(-270px)scale(.6);opacity: 0;}
 }
 /* 竖中指 */
 .ani-9:hover .hand{
@@ -357,6 +358,36 @@ main {
 	50%{transform: translateY(-4%);}
 	100%{transform: none;}
 }
+/* .ani-10{
+	background: #00f;
+} */
+.ani-10 .mask{
+	z-index: 99;
+	position: absolute;
+	background: #fff;
+	border: 2px solid #4c4bfe;
+	padding: .2em .5em;
+	width: 80%;
+	height: auto;
+	left: 10%;
+	top: 0%;
+	opacity: 0;
+	transform: translateY(20%);
+	pointer-events: none;
+	transition: .1s ease-out;
+	display: none;
+}
+.ani-10:hover .mask{
+	transform: none;
+	opacity: 1;
+	display: block;
+}
+.ani-10 .mask::before{
+	content: "别戳我";
+	font-size: .5rem;
+	color: #4c4bfe;
+	line-height: 1;
+}
  /* 中间挖空 */
 .removed{
  /* background: #0f0; */
@@ -366,7 +397,7 @@ main {
 	display: none;
 }
 .mid{
-	padding: 45px 40px 50px;
+	padding: 50px 40px 15px;
 	position: absolute;
 	/* background: rgba(255,0,0,.3); */
 	/* z-index: -1; */
@@ -387,45 +418,90 @@ main {
 	color: #4c4afe;
 }
 .btn{
-	background: #4c4afe;
+	background: #ff0162;
 	padding: .2em .6em .2em .8em;
 	letter-spacing: .2em;
 	color: #fff;
 	font-weight: 700;
 	text-decoration: none;
-	font-size: 1rem;
 	z-index: 9999;
 	transition: all .1s ease-out;
 	display: block;
-	line-height: 2;
+	line-height: 1.75;
+	cursor: pointer;
 }
 .btn:hover{
-	background: #ff0162;
+	background: #4c4afe;
+	animation: shake-it .15s ease-in-out infinite;
+}
+@keyframes shake-it {
+	0%{transform: translateY(-5%);}
+	25%{transform: none;}
+	75%{transform: translateY(5%);}
+	10%{transform: none;}
+}
+.btn:active{
+	transform: scale(.95);
 }
 .tagline{
 	width: 100%;
+	padding: 1em 0;
+	line-height: 1.65;
 }
-.tagline ul{
+.tagline span{
+	display: inline-block;
+}
+.tagline em{
+	font-style: normal;
+	transition: all .1s ease-out;
+}
+.tagline em:last-of-type{
+	/* text-decoration: underline; */
+	/* background: #4c4afe;
+	color: #fff; */
+	border-bottom: 2px solid #4c4afe;
+}
+.more-info{
 	list-style: none;
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: space-between;
+	justify-content: center;
 	width: 100%;
 }
-.tagline li a{
-	font-size: .875rem;
+.more-info a{
+	font-size: .75rem;
 	margin: .3em 0;
-	background: #ff0162;
-}
-.tagline li a:hover{
 	background: #4c4afe;
+}
+.more-info a:hover{
+	background: #ff0162;
 }
 .buy{
 	width: 100%;
 }
+.sep{
+	height: 3px;
+	/* background: url(tile.png) repeat; */
+	background: #4c4afe;
+	background-size: 50% 100%;
+	width: 100%;
+}
 .buy a{
 	margin: 0 auto;
+	font-size: 1rem;
 	display: inline-block;
+	border: 3px solid transparent;
+	border-left: none;
+	border-top: none;
+	border-image: url(tile.png)6 round;
+}
+.popup{
+	z-index: 999999;
+	position: absolute;
+	background: #fff;
+	border: 2px solid #4c4bfe;
+	padding: 1em;
+	top: 0;
 }
 /*~Small Reslotuion*/
 @media screen and (max-width: 1050px) {
@@ -437,6 +513,9 @@ main {
 	.mid{
 		padding: 25px 20px 30px;
 	}
+	.more-info{
+		justify-content: center;
+	}
 }
 @media screen and (max-width: 900px) {
 	.wrapper,
@@ -446,5 +525,11 @@ main {
 	}
 	.mid{
 		padding: 20px 20px 25px;
+	}
+	.mid > .inner{
+		font-size: .5rem;
+	}
+	.buy a{
+		border: none;
 	}
 }

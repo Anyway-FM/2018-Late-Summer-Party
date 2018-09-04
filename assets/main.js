@@ -33,17 +33,17 @@ var g = new Vue({
 
     },
     popUp: function(a){
-      this.showPopup = true;
+      this.showPopup = true
       if (this.popupCount % 6 == 0) {
         this.popupContent = "设计杂谈播客 Anyway.FM 的<span>三周年线下活动</span>"
       }
       switch (a) {
         case '1': this.popupContent += "，<em><strong>时间</strong>定于 9 月 22 日下午 2:00 - 6:00</em>"
-          break;
-        case '2': this.popupContent += "，<em><strong>地点</strong>在上海市徐汇区「源咖啡」</em>"
-          break;
-        case '3': this.popupContent += "，<em><strong>主题</strong>包括：1. 「坦荡荡」2. 嘉宾沙龙：火山大陆滕磊 3. One more thing</em>"
-          break;
+          break
+        case '2': this.popupContent += "，<em><strong>地点</strong>在上海市徐家汇地铁站附近的「源咖啡」</em>"
+          break
+        case '3': this.popupContent += "，<em><strong>内容</strong>包括：主播们的「坦荡」分享 / 问答沙龙 / 吃蛋糕 / 到场嘉宾：ARK 创新咨询联合创始人滕磊</em>"
+          break
         default:
 
       }
@@ -90,11 +90,11 @@ initProcess = function() {
   g.hNumber = Math.floor( fullWidth / singleWidth )
   g.vNumber = Math.floor( fullHeight / singleHeight )
   g.numbers = g.hNumber * g.vNumber
-  console.log( "hNumber: " + g.hNumber + " vNumber: " + g.vNumber);
+  // console.log( "hNumber: " + g.hNumber + " vNumber: " + g.vNumber)
 
   g.peopleToTalk = g.numbers - Math.floor(g.hNumber / 2)
   if (g.vNumber > 10) {
-    g.midVNumber = 6;
+    g.midVNumber = 6
   }
 
 
@@ -116,7 +116,7 @@ initProcess = function() {
     g.midHeight = singleHeight * (g.midVNumber + 1)
   }
 
-  g.isLoaded = true;
+  g.isLoaded = true
 }
 window.onload = function(){
   initProcess()
