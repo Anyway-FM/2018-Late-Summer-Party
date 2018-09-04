@@ -9,7 +9,12 @@ var g = new Vue({
     midX: -200,
     midY: -200,
     vNumber: 6,
-    isLoaded: false
+    isLoaded: false,
+    showPopup: false,
+    popupCount: 1,
+    midVNumber: 4,
+    peopleToTalk: 12,
+    popupContent: "设计杂谈播客 Anyway.FM 的<span>三周年线下活动</span>"
   },
   methods: {
     randomNumber: function (x) {
@@ -20,11 +25,38 @@ var g = new Vue({
       x = Math.random() * x * 2  - x
       return (x.toFixed(0))
     },
+    isPopup: function(n){
+
+      if (this.numbers - Math.floor(this.hNumber / 2) == n) {
+        return true
+      }
+
+    },
+    popUp: function(a){
+      this.showPopup = true;
+      if (this.popupCount % 6 == 0) {
+        this.popupContent = "设计杂谈播客 Anyway.FM 的<span>三周年线下活动</span>"
+      }
+      switch (a) {
+        case '1': this.popupContent += "，<em><strong>时间</strong>定于 9 月 22 日下午 2:00 - 6:00</em>"
+          break;
+        case '2': this.popupContent += "，<em><strong>地点</strong>在上海市徐汇区「源咖啡」</em>"
+          break;
+        case '3': this.popupContent += "，<em><strong>主题</strong>包括：1. 「坦荡荡」2. 嘉宾沙龙：火山大陆滕磊 3. One more thing</em>"
+          break;
+        default:
+
+      }
+      this.popupCount ++
+      if (this.popupCount % 6 == 0) {
+        this.popupContent = "你是真皮……重来~"
+      }
+
+    },
     isRemoved: function(x) {
-      // console.log(x)
-      // console.log(this.rawHNumber);
+
       if (this.vNumber % 2 == 0) {
-        if (Math.abs(Math.floor(x / this.hNumber) + 1 - ( this.vNumber / 2 + 0.5) ) < 2) {
+        if (Math.abs(Math.floor( x / this.hNumber) + 1 - ( this.vNumber / 2 + 0.5) ) < (this.midVNumber / 2)) {
           if (Math.abs(x % this.hNumber - this.hNumber / 2 - 0.5) < 3) {
             return "removed"
           }
@@ -32,14 +64,12 @@ var g = new Vue({
 
       }
       else {
-        if (Math.abs(Math.floor(x / this.hNumber) + 1 - ( this.vNumber / 2 + 0.5) ) < 2.5) {
+        if (Math.abs(Math.floor(x / this.hNumber) + 1 - ( this.vNumber / 2 + 0.5) ) < (this.midVNumber / 2 + 0.5)) {
           if (Math.abs(x % this.hNumber - this.hNumber / 2 - 0.5) < 3) {
             return "removed"
           }
         }
-
       }
-
 
     }
   }
@@ -57,11 +87,15 @@ initProcess = function() {
 
   g.rawHNumber = fullWidth / singleWidth
 
-  // g.hNumber = Math.floor( fullWidth / singleWidth / 2) * 2
   g.hNumber = Math.floor( fullWidth / singleWidth )
   g.vNumber = Math.floor( fullHeight / singleHeight )
   g.numbers = g.hNumber * g.vNumber
   console.log( "hNumber: " + g.hNumber + " vNumber: " + g.vNumber);
+
+  g.peopleToTalk = g.numbers - Math.floor(g.hNumber / 2)
+  if (g.vNumber > 10) {
+    g.midVNumber = 6;
+  }
 
 
   if (g.hNumber %2 == 0) {
@@ -74,12 +108,12 @@ initProcess = function() {
   }
 
   if (g.vNumber%2==0) {
-    g.midY =( g.vNumber - 4 ) * singleHeight / 2
-    g.midHeight = singleHeight * 4
+    g.midY =( g.vNumber - g.midVNumber ) * singleHeight / 2
+    g.midHeight = singleHeight * g.midVNumber
   }
   else {
-    g.midY =( g.vNumber - 5 ) * singleHeight / 2
-    g.midHeight = singleHeight * 5
+    g.midY =( g.vNumber - g.midVNumber - 1 ) * singleHeight / 2
+    g.midHeight = singleHeight * (g.midVNumber + 1)
   }
 
   g.isLoaded = true;
